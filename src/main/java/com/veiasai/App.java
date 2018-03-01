@@ -1,4 +1,4 @@
-package veiasai_test;
+package com.veiasai;
 
 import com.veiasai.calculator;
 
