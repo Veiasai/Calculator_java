@@ -1,7 +1,5 @@
 package com.veiasai;
 
-import com.veiasai.calculator;
-
 import java.util.Scanner;
 
 /**
@@ -12,7 +10,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        calculator cal = new calculator();
+        Calculator cal = new Calculator();
         Scanner in = new Scanner(System.in);
         while (true)
         {

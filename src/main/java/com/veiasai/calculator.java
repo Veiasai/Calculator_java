@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class calculator {
+public class Calculator {
     private Scanner exp; // input expression
     private double result_double; // output
     private int state;  // 0 normal , 1 error , 2 done
@@ -13,7 +13,7 @@ public class calculator {
     private char sig; //record + -
     private int grade;
 
-    public calculator()
+    public Calculator()
     {
         this.state = 0;  // init
         this.e = null;
@@ -101,7 +101,7 @@ public class calculator {
             }
 
             switch (sig) {
-                case '#':
+                case 'e':
                     this.state = 2;
                     return num;
                 case '+':

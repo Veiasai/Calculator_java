@@ -3,7 +3,7 @@ package veiasai_test;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import com.veiasai.calculator;
+import com.veiasai.Calculator;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -46,32 +46,32 @@ public class AppTest
 
     //常规测试
     public void testadd() {
-        calculator cal = new calculator();
-        cal.setInput(new Scanner("1 + 1 #"));
+        Calculator cal = new Calculator();
+        cal.setInput(new Scanner("1 + 1 e"));
         cal.cal();
         assertEquals(2.0, cal.getResult_double());
         assertEquals(0,cal.getState());
     }
 
     public void testsub() {
-        calculator cal = new calculator();
-        cal.setInput(new Scanner("1 - 1 #"));
+        Calculator cal = new Calculator();
+        cal.setInput(new Scanner("1 - 1 e"));
         cal.cal();
         assertEquals(0.0, cal.getResult_double());
         assertEquals(0,cal.getState());
     }
 
     public void testmul() {
-        calculator cal = new calculator();
-        cal.setInput(new Scanner("5 * 5 #"));
+        Calculator cal = new Calculator();
+        cal.setInput(new Scanner("5 * 5 e"));
         cal.cal();
         assertEquals(25.0, cal.getResult_double());
         assertEquals(0,cal.getState());
     }
 
     public void testdiv() {
-        calculator cal = new calculator();
-        cal.setInput(new Scanner("5 / 2 #"));
+        Calculator cal = new Calculator();
+        cal.setInput(new Scanner("5 / 2 e"));
         cal.cal();
         assertEquals(2.5, cal.getResult_double());
         assertEquals(0,cal.getState());
@@ -79,8 +79,8 @@ public class AppTest
 
     //除以 0 测试
     public void testdiv0() {
-        calculator cal = new calculator();
-        cal.setInput(new Scanner("5 / 0 + 2 - 1 * 5 #"));
+        Calculator cal = new Calculator();
+        cal.setInput(new Scanner("5 / 0 + 2 - 1 * 5 e"));
         cal.cal();
         assertEquals(0.0, cal.getResult_double());
         assertEquals(1,cal.getState());
@@ -89,31 +89,31 @@ public class AppTest
 
     //综合测试
     public void test1() {
-        calculator cal = new calculator();
-        cal.setInput(new Scanner("5 / 2 + 2 - 1 * 5 #"));
+        Calculator cal = new Calculator();
+        cal.setInput(new Scanner("5 / 2 + 2 - 1 * 5 e"));
         cal.cal();
         assertEquals(-0.5, cal.getResult_double());
         assertEquals(0,cal.getState());
     }
 
     public void test2() {
-        calculator cal = new calculator();
-        cal.setInput(new Scanner("5 * 4 + 2 - 2 * 5 / 5 #"));
+        Calculator cal = new Calculator();
+        cal.setInput(new Scanner("5 * 4 + 2 - 2 * 5 / 5 e"));
         cal.cal();
         assertEquals(20.0, cal.getResult_double());
         assertEquals(0,cal.getState());
     }
 
     public void test3() {
-        calculator cal = new calculator();
-        cal.setInput(new Scanner("5 * 4 + 2 - 2 * 5 / 5 + 4 #"));
+        Calculator cal = new Calculator();
+        cal.setInput(new Scanner("5 * 4 + 2 - 2 * 5 / 5 + 4 e"));
         cal.cal();
         assertEquals(24.0, cal.getResult_double());
         assertEquals(0,cal.getState());
     }
     public void test4() {
-        calculator cal = new calculator();
-        cal.setInput(new Scanner("1 - 5 + 4 #"));
+        Calculator cal = new Calculator();
+        cal.setInput(new Scanner("1 - 5 + 4 e"));
         cal.cal();
         assertEquals(0.0, cal.getResult_double());
         assertEquals(0,cal.getState());
@@ -121,15 +121,15 @@ public class AppTest
 
     //异常输入测试
     public void test5() {
-        calculator cal = new calculator();
-        cal.setInput(new Scanner("1- 5 + 4 #"));
+        Calculator cal = new Calculator();
+        cal.setInput(new Scanner("1- 5 + 4 e"));
         cal.cal();
         assertEquals(1,cal.getState());
         assertEquals(new IOException("read number error").toString(), cal.getE().toString());
     }
 
     public void test6() {
-        calculator cal = new calculator();
+        Calculator cal = new Calculator();
         cal.setInput(new Scanner("1 - 5 + 4 "));
         cal.cal();
         assertEquals(1,cal.getState());
