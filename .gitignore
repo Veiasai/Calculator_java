@@ -30,4 +30,7 @@ dependency-reduced-pom.xml
 *.iws
 *.idea
 
+# logger
+log/
+
 README.html
