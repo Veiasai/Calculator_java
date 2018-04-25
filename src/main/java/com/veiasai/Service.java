@@ -2,6 +2,7 @@ package com.veiasai;
 
 import org.springframework.boot.*;
 import org.springframework.boot.autoconfigure.*;
+import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,9 +10,12 @@ import java.util.Scanner;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-@Controller
+@RestController
 @EnableAutoConfiguration
+@Import(WebConfig.class)
 public class Service {
     protected final Logger logger=LoggerFactory.getLogger(this.getClass());
 
@@ -44,4 +48,5 @@ public class Service {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Service.class, args);
     }
+
 }
