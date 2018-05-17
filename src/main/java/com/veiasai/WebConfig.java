@@ -23,10 +23,9 @@ public class WebConfig {
 
     @Bean
     public FilterRegistrationBean testFilterRegistration() {
-
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(new MyFilter());
-        registration.addUrlPatterns("/*");
+        registration.addUrlPatterns("/test");
         registration.addInitParameter("paramName", "paramValue");
         registration.setName("MyFilter");
         registration.setOrder(1);
@@ -36,6 +35,7 @@ public class WebConfig {
     public class MyFilter implements Filter {
         @Override
         public void destroy() {
+
         }
 
         @Override

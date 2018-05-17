@@ -1,23 +1,32 @@
 package com.veiasai;
 
+import com.veiasai.security.MySecurity;
+import com.veiasai.security.UserService;
 import org.springframework.boot.*;
 import org.springframework.boot.autoconfigure.*;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
-import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Scanner;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@EnableAutoConfiguration
-@Import(WebConfig.class)
-public class Service {
+@SpringBootApplication
+public class Service extends SpringBootServletInitializer {
+
     protected final Logger logger=LoggerFactory.getLogger(this.getClass());
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(Service.class);
+    }
 
     @RequestMapping("/")
     @ResponseBody
@@ -27,7 +36,7 @@ public class Service {
 
     @RequestMapping("/calculator/{expression}")
     @ResponseBody
-    public String Cal(@PathVariable String expression){
+    public String Cal(@PathVariable String expression,HttpServletRequest httpServletRequest){
         logger.debug("访问cal:" + expression);
         Calculator cal = new Calculator();
         Scanner in = new Scanner(expression);
